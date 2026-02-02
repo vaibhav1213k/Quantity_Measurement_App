@@ -34,13 +34,10 @@ public class Length{
     public  boolean equals(Object obj){
         boolean boolResult = false;
       
+    if (obj == null) return false;
+    if (this == obj) return true;
+    if (!(obj instanceof Length)) return false;
 
-        if(this == null){
-            return false;
-        }
-        if(this == obj){
-            return true;
-        }
         // typecasting
         Length val2 = (Length) obj;
 
