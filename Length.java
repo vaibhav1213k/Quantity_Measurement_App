@@ -29,6 +29,37 @@ public class Length{
     public double convertToBaseUnit(){
         return this.value*this.unit.getConversionFactor();
     }
+    public static double convertToBaseUnit(Length source){      
+        if (source == null) {
+            throw new IllegalArgumentException("Source Length cannot be null");
+        }
+        return source.value*source.unit.getConversionFactor();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%.2f %s", value, unit);
+    }
+
+    public static  Length ConvertTo(Length source, LengthUnit toUnit){        
+        if (source == null) {
+            throw new IllegalArgumentException("Source Length cannot be null");
+        }
+        if (toUnit == null) {
+            throw new IllegalArgumentException("Target unit cannot be null");
+        }
+        // convert to base inches - multiply conversion factor
+        Double baseUnit = convertToBaseUnit(source);
+        // convert to target  - divide by conversion factor
+        Double TargetValue = baseUnit/toUnit.getConversionFactor();
+        
+        return new Length(TargetValue, toUnit);
+    }
+
+    public static Length DemonstrateLengthConversion(Length source, Length.LengthUnit toUnit){
+        Length convertedLength = ConvertTo(source,toUnit);
+        return convertedLength;
+    }
 
     @Override
     public  boolean equals(Object obj){
@@ -52,9 +83,20 @@ public class Length{
     }
 
 public static void main(String[] args){
-    Length len1 = new Length(1.0, LengthUnit.YARD);
-    Length len2 = new Length(360.0, LengthUnit.Inches);
+    Length len1 = new Length(100, LengthUnit.CM);
+    Length len2 = new Length(36.0, LengthUnit.Inches);
     System.out.println(len1.equals(len2));
+
+    Length res = Length. DemonstrateLengthConversion(len1, LengthUnit.YARD);
+    System.out.print(len1.toString());
+    System.out.print(" is ");
+    System.out.print(res.toString());
+
+    System.out.println("")
+
+    public static void DemonstrateLength(Double value, LengthUnit. fromUnit, LEngthUnit.ToUnit){
+
+    }
 }
 }
 
