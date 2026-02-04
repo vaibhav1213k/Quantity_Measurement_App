@@ -82,21 +82,31 @@ public class Length{
         return boolResult;
     }
 
-public static void main(String[] args){
+// feet inch - feet
+    
+    public static Length Addition(Length Length1, Length Length2){
+        Length convertedLength2 = DemonstrateLengthConversion(Length2,Length1.unit);
+        double combinedValue = Length1.value + convertedLength2.value;
+        return new Length(combinedValue,Length1.unit);
+    }
+
+
+public static void main(String[] args) {
+
     Length len1 = new Length(100, LengthUnit.CM);
     Length len2 = new Length(36.0, LengthUnit.Inches);
-    System.out.println(len1.equals(len2));
 
-    Length res = Length. DemonstrateLengthConversion(len1, LengthUnit.YARD);
-    System.out.print(len1.toString());
-    System.out.print(" is ");
-    System.out.print(res.toString());
+    System.out.println("Equal? " + len1.equals(len2));
 
-    System.out.println("")
+    Length res = Length.DemonstrateLengthConversion(len1, LengthUnit.YARD);
+    System.out.println(len1.toString() + " is " + res.toString());
 
-    public static void DemonstrateLength(Double value, LengthUnit. fromUnit, LEngthUnit.ToUnit){
+    System.out.println();
+    System.out.println("Addition of 2 lengths:");
 
-    }
+    Length result = Addition(len1, len2);
+    System.out.println("Result = " + result.toString());
+    System.out.println(len1.toString() + " + " + len2.toString() + " is : " + result.toString());
 }
 }
 
