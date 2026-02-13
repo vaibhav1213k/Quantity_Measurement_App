@@ -108,9 +108,7 @@ public class QuantityMeasurement{
         Feet.DemonstrateFeetEquality(11,11);
         Inches.DemonstrateInchesEquality(12,12);
 
-
-
-
     }
     
 }
+
